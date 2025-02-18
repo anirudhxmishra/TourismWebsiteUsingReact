@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+    font-family:'Times New Roman', Times, serif;
+}
+.title{
+    font-size: 3rem;
+    margin:6vh;
+    border: 7px dashed rgb(1,17,160);
+    border-radius: 20px;
+    padding:1vw 5vw;
+}
+.container{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+
+}
+.cards{
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    max-width: 1300px;
+    margin:0 auto;
+}
+.card{
+    width:400px;
+    height: max-content;
+    margin: 1rem;
+    padding:1rem;
+    display:flex;
+    flex-direction: column;
+    border-radius:10px;
+    align-items:center;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.sigmar-regular {
+    font-family: "Sigmar", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+    
+  
+.image{
+    width: 350px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.image-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .homepage-img {
+    width: 100%;             /* Ensures image spans the full width */
+    height: auto;            /* Keeps image aspect ratio intact */
+    display: block;          /* Prevents space below the image */
+    object-fit: cover;       /* Ensures image covers container properly */
+    filter: brightness(0.7); /* Optional, dims the image */
+  }
+  
+  .overlay-text {
+    position: absolute;       /* Positions text over the image */
+    top: 35%;                 /* Centers the text vertically */
+    left: 50%;                /* Centers the text horizontally */
+    transform: translate(-50%, -50%); /* Offsets text to center it */
+    font-family:"Sigmar", serif;
+    font-size: 8rem;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 30px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  
+.tour-info{
+    margin:20px 5px;
+}
+.tour-price{
+    color:#1faa59;
+    font-size:1.3rem;
+}
+.tour-name{
+    font-size: 1.5rem;
+}
+.read-more{
+    color: #05465e;
+    cursor: pointer;
+}
+.btn-red{
+    background-color: #b4161b21;
+    margin-top: 18px;
+    padding:10px 80px;
+    border:1px solid #b4161b;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btn-red:hover{
+    background-color: red;
+    color:white;
+    transform: all 0.3sec;
+}
+.refresh{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.btn-white{
+    margin-top:18px;
+    cursor: pointer;
+    padding:10px 80px;
+    border:1px solid white;
+}
+.btn-white:hover{
+    background-color: white;
+    color:balck;
+    
+}
+/* For the entire webpage */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  /* Scrollbar Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light grey background */
+    border-radius: 10px;
+  }
+  
+  /* Scrollbar Thumb */
+  ::-webkit-scrollbar-thumb {
+    background: #ac0000; /* Dark grey */
+    border-radius: 10px;
+  }
+  
+  /* On hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Even darker grey */
+  }
+  footer {
+    background-image: url('https://images.unsplash.com/photo-1570605505301-0f713202ca7a?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add the image path here */
+    background-size: cover; /* Ensures the image covers the entire footer */
+    background-position: center; /* Centers the image */
+    color: white;
+    text-align: center;
+    padding: 150px;
+  }
