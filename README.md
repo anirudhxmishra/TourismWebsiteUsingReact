@@ -38,8 +38,8 @@ To run this project locally, follow these steps:
 Here are some screenshots showcasing the project:
 
 ![🏠 Homepage](Images/img.png)
-![📋 Tour List](Images/img2.png)
 ![📋 Tour List](Images/img1.png)
+![📋 Tour List](Images/img2.png)
 
 ## 🖼️ Image Credits
 All images used in this project are sourced from [Unsplash](https://unsplash.com/). 📷
