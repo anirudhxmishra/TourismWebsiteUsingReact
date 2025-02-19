@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { MdTour } from "react-icons/md";
+import { toast } from "react-toastify";
 
-function Card({ id, image, info, price, name, removeTour }) { 
+function Card({ id, image, info, price, name, removeTour, flaggedTours, setFlaggedTours }) { 
     const [readmore, setReadmore] = useState(false);
-    const description = `${info.substring(0, 200)}....`;
+    const description = info.slice(0, 200);
 
-    function readmoreHandler() {
-        setReadmore(!readmore);
+    function flagHandler() {
+        if (flaggedTours.includes(id)) {
+            setFlaggedTours((prev) => prev.filter((cid) => cid !== id));
+            toast.warning(`${name} flag removed.`, { position: "top-right" });
+        } else {
+            setFlaggedTours((prev) => [...prev, id]);
+            toast.success(`${name} is Flagged!`, { position: "top-right" });
+        }
     }
 
     return (
@@ -16,14 +24,25 @@ function Card({ id, image, info, price, name, removeTour }) {
                     <h4 className="tour-price">₹ {price}</h4>
                     <h4 className="tour-name">{name}</h4>
                 </div>
+                
+                <div className="Flag">
+                    <button 
+                        className={`flag-btn ${flaggedTours.includes(id) ? "flagged" : ""}`} 
+                        onClick={flagHandler}
+                    >
+                        <MdTour fontSize="1.75rem" />
+                    </button>
+                </div>
+
                 <div className="description">
-                    {readmore ? info : description}
-                    <span className="read-more" onClick={readmoreHandler}>
+                    {readmore ? info : `${description}...`}
+                    <span className="read-more" onClick={() => setReadmore(!readmore)}>
                         {readmore ? "Show Less" : "Read More"}
                     </span>
                 </div>
             </div>
-            <button className="btn-red" onClick={() => removeTour(id)}>
+
+            <button className="btn-red" onClick={() => removeTour(id, name)} >
                 Not Interested
             </button>
         </div>

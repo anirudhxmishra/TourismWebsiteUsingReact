@@ -151,6 +151,33 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Even darker grey */
   }
+  .Flag {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -2rem; /* Adjust position relative to the card */
+}
+
+.flag-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.flag-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
+.flag-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.flag-btn.flagged {
+    color: rgb(228, 0, 0); /* Change to any color you prefer */
+}
   footer {
     background-image: url('https://images.unsplash.com/photo-1570605505301-0f713202ca7a?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add the image path here */
     background-size: cover; /* Ensures the image covers the entire footer */
