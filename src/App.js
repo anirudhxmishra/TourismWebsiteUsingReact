@@ -3,30 +3,32 @@ import data from "./data.js";
 import Tours from "./Component/Tours";
 import Spinner from "./Component/Spinner";  
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+import "react-toastify/dist/ReactToastify.css";
+import Register from "./Component/register.jsx";
+import Login from "./Component/login.jsx";
 
 const App = () => {
   const [tours, setTours] = useState(data);
   const [loading, setLoading] = useState(true);
   const [flaggedTours, setFlaggedTours] = useState([]);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
-  // Function to remove a tour and show toast
+
   function removeTour(id, name) {
     setTours(tours.filter((tour) => tour.id !== id));
-    toast.info(`${name} Tour Removed.`, { position: "top-right" });
+    toast.info(`${name} Tour Removed.`, { position: "top-right" ,autoClose: 3000  });
   }
 
-  // Function to shuffle array randomly
   function shuffleArray(array) {
-    let shuffled = [...array]; // Create a copy
+    let shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
   }
 
-  // Simulate loading effect
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -34,8 +36,9 @@ const App = () => {
   }, []);
 
   return (
+    <div>
     <div className="homepage">
-      <ToastContainer />  {/* Toast notifications enabled */}
+      <ToastContainer />
 
       <div className="image-container">
         <img
@@ -45,6 +48,33 @@ const App = () => {
         />
         <h1 className="overlay-text">Mystic Bharat</h1>
       </div>
+
+      
+      <button className="reg-btn" onClick={() => setShowRegister(true)}>
+  Register
+</button>
+
+<button className="login-btn" onClick={() => setShowLogin(true)}>
+  Login
+</button>
+
+{showRegister && (
+  <div className="modal-overlay" onClick={() => setShowRegister(false)}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <Register onClose={() => setShowRegister(false)} />
+      <button className="close-btn" onClick={() => setShowRegister(false)}>✖</button>
+    </div>
+  </div>
+)}
+
+{showLogin && (
+  <div className="modal-overlay" onClick={() => setShowLogin(false)}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <Login onClose={() => setShowLogin(false)} />
+      <button className="close-btn" onClick={() => setShowLogin(false)}>✖</button>
+    </div>
+  </div>
+)}
 
       <div>
         {loading ? (
@@ -65,6 +95,7 @@ const App = () => {
           />
         )}
       </div>
+    </div>
     </div>
   );
 };

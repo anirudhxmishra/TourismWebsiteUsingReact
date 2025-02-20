@@ -12,8 +12,8 @@ function Tours({ tours, removeTour, flaggedTours, setFlaggedTours }) {
             key={tour.id} 
             {...tour} 
             removeTour={removeTour} 
-            flaggedTours={flaggedTours}  // ✅ Passed to Card
-            setFlaggedTours={setFlaggedTours}  // ✅ Passed to Card
+            flaggedTours={flaggedTours} 
+            setFlaggedTours={setFlaggedTours}
           />
         ))}
       </div>

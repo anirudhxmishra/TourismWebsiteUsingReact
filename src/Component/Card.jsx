@@ -9,10 +9,10 @@ function Card({ id, image, info, price, name, removeTour, flaggedTours, setFlagg
     function flagHandler() {
         if (flaggedTours.includes(id)) {
             setFlaggedTours((prev) => prev.filter((cid) => cid !== id));
-            toast.warning(`${name} flag removed.`, { position: "top-right" });
+            toast.warning(`${name} flag removed.`, { position: "top-right" ,autoClose: 3000  });
         } else {
             setFlaggedTours((prev) => [...prev, id]);
-            toast.success(`${name} is Flagged!`, { position: "top-right" });
+            toast.success(`${name} is Flagged!`, { position: "top-right",autoClose: 3000   });
         }
     }
 

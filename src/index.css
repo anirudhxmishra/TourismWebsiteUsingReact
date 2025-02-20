@@ -47,42 +47,128 @@ body {
     font-family: "Sigmar", serif;
     font-weight: 400;
     font-style: normal;
+}
+/* Modal Background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
-    
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Slight transparency */
+    z-index: 999; /* Ensure it's above everything */
+  }
+  
+  
+  /* Close Button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .close-btn:hover {
+    color: rgb(246, 33, 33); /* Slightly brighter red */
+    transform: scale(1.1); /* Slight pop effect on hover */
+    text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+}
+
+  /* Register Form Styling */
+  .register-container input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .register-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .register-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: -8px;
+  }
+  
   
 .image{
     width: 350px;
     aspect-ratio: 1/1;
     object-fit: cover;
 }
+.overlay-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Sigmar", serif;
+    font-size: 6rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #ffffff, #fdfdfd);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
 .image-container {
     position: relative;
     width: 100%;
-  }
-  
-  .homepage-img {
-    width: 100%;             /* Ensures image spans the full width */
-    height: auto;            /* Keeps image aspect ratio intact */
-    display: block;          /* Prevents space below the image */
-    object-fit: cover;       /* Ensures image covers container properly */
-    filter: brightness(0.7); /* Optional, dims the image */
-  }
-  
-  .overlay-text {
-    position: absolute;       /* Positions text over the image */
-    top: 35%;                 /* Centers the text vertically */
-    left: 50%;                /* Centers the text horizontally */
-    transform: translate(-50%, -50%); /* Offsets text to center it */
-    font-family:"Sigmar", serif;
-    font-size: 8rem;
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px 30px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  
+    overflow: hidden;
+}
+
+.homepage-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: transform 6s ease-in-out;
+}
+
+.image-container:hover .homepage-img {
+    transform: scale(1.05);
+}
+
+
 .tour-info{
     margin:20px 5px;
 }
@@ -151,7 +237,54 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Even darker grey */
   }
-  .Flag {
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+  .reg-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px; /* Aligns button to top-right */
+      font-family: 'Poppins', sans-serif; /* Modern, clean font */
+      font-size: 1.5rem;
+      background-color: transparent;
+      border: none; /* No border */
+      color: #f1f1f1;
+      cursor: pointer;
+      padding: 10px 20px; /* Adds spacing for better clickability */
+      border-radius: 10px; /* Slight rounding for a modern look */
+      transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .reg-btn:hover {
+      color: rgb(246, 33, 33); /* Slightly brighter red */
+      transform: scale(1.1); /* Slight pop effect on hover */
+      text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+  }
+  .login-btn {
+    position: absolute;
+    top: 20px;
+    right: 160px; /* Aligns button to top-right */
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none; /* No border */
+    color: #f1f1f1;
+    cursor: pointer;
+    padding: 10px 20px; /* Adds spacing for better clickability */
+    border-radius: 10px; /* Slight rounding for a modern look */
+    transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.login-btn:hover {
+    color: rgb(246, 33, 33); /* Slightly brighter red */
+    transform: scale(1.1); /* Slight pop effect on hover */
+    text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+}
+
+  
+
+
+.Flag {
     display: flex;
     justify-content: flex-end;
     margin-top: -2rem; /* Adjust position relative to the card */
