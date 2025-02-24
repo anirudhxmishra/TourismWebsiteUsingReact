@@ -1,321 +1,336 @@
-@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 body {
-    min-height: 100vh;
-    font-family:'Times New Roman', Times, serif;
+  min-height: 100vh;
+  font-family: "Times New Roman", Times, serif;
 }
-.title{
-    font-size: 3rem;
-    margin:6vh;
-    border: 7px dashed rgb(1,17,160);
-    border-radius: 20px;
-    padding:1vw 5vw;
+.title {
+  font-size: 3rem;
+  margin: 6vh;
+  border: 7px dashed rgb(1, 17, 160);
+  border-radius: 20px;
+  padding: 1vw 5vw;
 }
-.container{
-    display:flex;
-    align-items: center;
-    justify-content:center;
-    flex-direction: column;
-
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.cards{
-    display:flex;
-    justify-content: center;
-    flex-wrap:wrap;
-    max-width: 1300px;
-    margin:0 auto;
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1300px;
+  margin: 0 auto;
 }
-.card{
-    width:400px;
-    height: max-content;
-    margin: 1rem;
-    padding:1rem;
-    display:flex;
-    flex-direction: column;
-    border-radius:10px;
-    align-items:center;
-    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.card {
+  width: 400px;
+  height: max-content;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .sigmar-regular {
-    font-family: "Sigmar", serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Sigmar", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 /* Modal Background */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    position: relative;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Slight transparency */
-    z-index: 999; /* Ensure it's above everything */
-  }
-  
-  
-  /* Close Button */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  .close-btn:hover {
-    color: rgb(246, 33, 33); /* Slightly brighter red */
-    transform: scale(1.1); /* Slight pop effect on hover */
-    text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-  /* Register Form Styling */
-  .register-container input {
-    width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .register-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .register-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .error {
-    color: red;
-    font-size: 12px;
-    margin-top: -8px;
-  }
-  
-  
-.image{
-    width: 350px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Slight transparency */
+  z-index: 999; /* Ensure it's above everything */
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: rgb(246, 33, 33); /* Slightly brighter red */
+  transform: scale(1.1); /* Slight pop effect on hover */
+  text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+}
+
+/* Register Form Styling */
+.register-container input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+}
+
+.image {
+  width: 350px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 .overlay-text {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: "Sigmar", serif;
-    font-size: 6rem;
-    font-weight: bold;
-    background: linear-gradient(to right, #ffffff, #fdfdfd);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 1.5s ease-in-out forwards;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Sigmar", serif;
+  font-size: 6rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #ffffff, #fdfdfd);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 4px 4px 10px rgba(134, 131, 131, 0.5);
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
 .image-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .homepage-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    filter: brightness(0.7);
-    transition: transform 6s ease-in-out;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  filter: brightness(0.7);
+  transition: transform 6s ease-in-out;
 }
 
 .image-container:hover .homepage-img {
-    transform: scale(1.05);
+  transform: scale(1.2);
 }
 
-
-.tour-info{
-    margin:20px 5px;
+.tour-info {
+  margin: 20px 5px;
 }
-.tour-price{
-    color:#1faa59;
-    font-size:1.3rem;
+.tour-price {
+  color: #1faa59;
+  font-size: 1.3rem;
 }
-.tour-name{
-    font-size: 1.5rem;
+.tour-name {
+  font-size: 1.5rem;
 }
-.read-more{
-    color: #05465e;
-    cursor: pointer;
+.read-more {
+  color: #05465e;
+  cursor: pointer;
 }
-.btn-red{
-    background-color: #b4161b21;
-    margin-top: 18px;
-    padding:10px 80px;
-    border:1px solid #b4161b;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
+.btn-red {
+  background-color: #b4161b21;
+  margin-top: 18px;
+  padding: 10px 80px;
+  border: 1px solid #b4161b;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
-.btn-red:hover{
-    background-color: red;
-    color:white;
-    transform: all 0.3sec;
+.btn-red:hover {
+  background-color: red;
+  color: white;
+  transform: all 0.3sec;
 }
-.refresh{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.refresh {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-.btn-white{
-    margin-top:18px;
-    cursor: pointer;
-    padding:10px 80px;
-    border:1px solid white;
+.btn-white {
+  margin-top: 18px;
+  cursor: pointer;
+  padding: 10px 80px;
+  border: 1px solid white;
 }
-.btn-white:hover{
-    background-color: white;
-    color:balck;
-    
+.btn-white:hover {
+  background-color: white;
+  color: balck;
 }
 /* For the entire webpage */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
-  }
-  
-  /* Scrollbar Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Light grey background */
-    border-radius: 10px;
-  }
-  
-  /* Scrollbar Thumb */
-  ::-webkit-scrollbar-thumb {
-    background: #ac0000; /* Dark grey */
-    border-radius: 10px;
-  }
-  
-  /* On hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Even darker grey */
-  }
+  width: 8px; /* Width of the scrollbar */
+}
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* Scrollbar Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey background */
+  border-radius: 10px;
+}
 
-  .reg-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px; /* Aligns button to top-right */
-      font-family: 'Poppins', sans-serif; /* Modern, clean font */
-      font-size: 1.5rem;
-      background-color: transparent;
-      border: none; /* No border */
-      color: #f1f1f1;
-      cursor: pointer;
-      padding: 10px 20px; /* Adds spacing for better clickability */
-      border-radius: 10px; /* Slight rounding for a modern look */
-      transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .reg-btn:hover {
-      color: rgb(246, 33, 33); /* Slightly brighter red */
-      transform: scale(1.1); /* Slight pop effect on hover */
-      text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
-  }
-  .login-btn {
-    position: absolute;
-    top: 20px;
-    right: 160px; /* Aligns button to top-right */
-    font-family: 'Poppins', sans-serif; /* Modern, clean font */
-    font-size: 1.5rem;
-    background-color: transparent;
-    border: none; /* No border */
-    color: #f1f1f1;
-    cursor: pointer;
-    padding: 10px 20px; /* Adds spacing for better clickability */
-    border-radius: 10px; /* Slight rounding for a modern look */
-    transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease; /* Smooth hover effect */
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: #ac0000; /* Dark grey */
+  border-radius: 10px;
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Even darker grey */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+.reg-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Aligns button to top-right */
+  font-family: "Poppins", sans-serif; /* Modern, clean font */
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none; /* No border */
+  color: #f1f1f1;
+  cursor: pointer;
+  padding: 10px 20px; /* Adds spacing for better clickability */
+  border-radius: 10px; /* Slight rounding for a modern look */
+  transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.reg-btn:hover {
+  color: rgb(246, 33, 33); /* Slightly brighter red */
+  transform: scale(1.1); /* Slight pop effect on hover */
+  text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+}
+.login-btn {
+  position: absolute;
+  top: 20px;
+  right: 160px; /* Aligns button to top-right */
+  font-family: "Poppins", sans-serif; /* Modern, clean font */
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none; /* No border */
+  color: #f1f1f1;
+  cursor: pointer;
+  padding: 10px 20px; /* Adds spacing for better clickability */
+  border-radius: 10px; /* Slight rounding for a modern look */
+  transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease; /* Smooth hover effect */
 }
 
 .login-btn:hover {
-    color: rgb(246, 33, 33); /* Slightly brighter red */
-    transform: scale(1.1); /* Slight pop effect on hover */
-    text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
+  color: rgb(246, 33, 33); /* Slightly brighter red */
+  transform: scale(1.1); /* Slight pop effect on hover */
+  text-shadow: 0px 0px 10px rgba(255, 69, 69, 0.8); /* Glowing text effect */
 }
 
-  
-
-
 .Flag {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -2rem; /* Adjust position relative to the card */
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -2rem; /* Adjust position relative to the card */
 }
 
 .flag-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .flag-btn:hover {
-    transform: scale(1.1);
-    background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
 }
 
 .flag-btn:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .flag-btn.flagged {
-    color: rgb(228, 0, 0); /* Change to any color you prefer */
+  color: rgb(228, 0, 0); /* Change to any color you prefer */
 }
-  footer {
-    background-image: url('https://images.unsplash.com/photo-1570605505301-0f713202ca7a?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add the image path here */
-    background-size: cover; /* Ensures the image covers the entire footer */
-    background-position: center; /* Centers the image */
-    color: white;
-    text-align: center;
-    padding: 150px;
-  }
+footer {
+  background-image: url("https://images.unsplash.com/photo-1570605505301-0f713202ca7a?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Add the image path here */
+  background-size: cover; /* Ensures the image covers the entire footer */
+  background-position: center; /* Centers the image */
+  color: white;
+  text-align: center;
+  padding: 150px;
+}
+.login-prompt {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-prompt p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.login-prompt button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background: #ff6600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.login-prompt button:hover {
+  background: #e65c00;
+}

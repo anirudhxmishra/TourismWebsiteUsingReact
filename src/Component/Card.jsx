@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdTour } from "react-icons/md";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 function Card({ id, image, info, price, name, removeTour, flaggedTours, setFlaggedTours }) { 
     const [readmore, setReadmore] = useState(false);
@@ -45,6 +45,8 @@ function Card({ id, image, info, price, name, removeTour, flaggedTours, setFlagg
             <button className="btn-red" onClick={() => removeTour(id, name)} >
                 Not Interested
             </button>
+
+            <ToastContainer />
         </div>
     );
 }

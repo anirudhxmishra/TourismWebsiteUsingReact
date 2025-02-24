@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-function Login({ onClose }) {
+function Login({ onClose, onLoginSuccess }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
+  const [loginError, setLoginError] = useState(""); // Error message for invalid login
 
   function changeHandler(event) {
     setFormData((prevFormData) => ({
@@ -24,43 +25,60 @@ function Login({ onClose }) {
     return Object.keys(newErrors).length === 0;
   }
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
+    
     if (validateForm()) {
-      alert("Welcome!");
-      onClose(); // ✅ Close modal after success
+      try {
+        const response = await fetch("http://localhost:8080/login", {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+          onLoginSuccess(); // ✅ Successfully logged in
+          onClose(); // ✅ Close modal
+        } else {
+          setLoginError(data.error || "Invalid email or password."); // ❌ Show backend error
+        }
+      } catch (error) {
+        setLoginError("Server error. Please try again later."); // ❌ Handle network errors
+      }
     }
   }
 
   return (
-    <>
+    <div className="register-container">
+      <h2>Login</h2>
+      {loginError && <p className="error">{loginError}</p>} {/* Display login error */}
+      
+      <form onSubmit={submitHandler}>
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={changeHandler}
+          name="email"
+          value={formData.email}
+          required
+        />
+        {errors.email && <p className="error">{errors.email}</p>}
 
-      <div className="register-container">
-        <h2>Login</h2>
-        <form onSubmit={submitHandler}>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={changeHandler}
+          name="password"
+          value={formData.password}
+          required
+        />
+        {errors.password && <p className="error">{errors.password}</p>}
 
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={changeHandler}
-            name="email"
-            value={formData.email}
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={changeHandler}
-            name="password"
-            value={formData.password}
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
-
-          <button type="submit" className="register-btn">Login</button>
-        </form>
-      </div>
-    </>
+        <button type="submit" className="register-btn">Login</button>
+      </form>
+    </div>
   );
 }
 

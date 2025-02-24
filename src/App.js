@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import data from "./data.js";
-import Tours from "./Component/Tours";
-import Spinner from "./Component/Spinner";  
+import Tours from "./Component/Tours.jsx";
+import Spinner from "./Component/Spinner.jsx";  
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./Component/register.jsx";
 import Login from "./Component/login.jsx";
+import './App.css';
 
 const App = () => {
   const [tours, setTours] = useState(data);
@@ -13,11 +14,11 @@ const App = () => {
   const [flaggedTours, setFlaggedTours] = useState([]);
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // Track login status
 
   function removeTour(id, name) {
     setTours(tours.filter((tour) => tour.id !== id));
-    toast.info(`${name} Tour Removed.`, { position: "top-right" ,autoClose: 3000  });
+    toast.info(`${name} Tour Removed.`, { position: "top-right", autoClose: 3000 });
   }
 
   function shuffleArray(array) {
@@ -35,8 +36,10 @@ const App = () => {
     }, 2000);
   }, []);
 
+  // Show only 6 tours if not logged in
+  const visibleTours = isLoggedIn ? tours : shuffleArray(tours).slice(0, 6);
+
   return (
-    <div>
     <div className="homepage">
       <ToastContainer />
 
@@ -49,36 +52,30 @@ const App = () => {
         <h1 className="overlay-text">Mystic Bharat</h1>
       </div>
 
-      
-      <button className="reg-btn" onClick={() => setShowRegister(true)}>
-  Register
-</button>
+      <button className="reg-btn" onClick={() => setShowRegister(true)}>Register</button>
+      <button className="login-btn" onClick={() => setShowLogin(true)}>Login</button>
 
-<button className="login-btn" onClick={() => setShowLogin(true)}>
-  Login
-</button>
+      {showRegister && (
+        <div className="modal-overlay" onClick={() => setShowRegister(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <Register onClose={() => setShowRegister(false)} />
+            <button className="close-btn" onClick={() => setShowRegister(false)}>✖</button>
+          </div>
+        </div>
+      )}
 
-{showRegister && (
-  <div className="modal-overlay" onClick={() => setShowRegister(false)}>
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <Register onClose={() => setShowRegister(false)} />
-      <button className="close-btn" onClick={() => setShowRegister(false)}>✖</button>
-    </div>
-  </div>
-)}
-
-{showLogin && (
-  <div className="modal-overlay" onClick={() => setShowLogin(false)}>
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <Login onClose={() => setShowLogin(false)} />
-      <button className="close-btn" onClick={() => setShowLogin(false)}>✖</button>
-    </div>
-  </div>
-)}
+      {showLogin && (
+        <div className="modal-overlay" onClick={() => setShowLogin(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <Login onLoginSuccess={() => { setIsLoggedIn(true); setShowLogin(false); }} />
+            <button className="close-btn" onClick={() => setShowLogin(false)}>✖</button>
+          </div>
+        </div>
+      )}
 
       <div>
         {loading ? (
-          <Spinner />
+          <div className="spinner"><Spinner /></div>
         ) : tours.length === 0 ? (
           <div className="refresh">
             <h2>No Tours Left!</h2>
@@ -87,15 +84,22 @@ const App = () => {
             </button>
           </div>
         ) : (
-          <Tours 
-            tours={tours} 
-            removeTour={removeTour} 
-            flaggedTours={flaggedTours} 
-            setFlaggedTours={setFlaggedTours} 
-          />
+          <>
+            <Tours 
+              tours={visibleTours} 
+              removeTour={removeTour} 
+              flaggedTours={flaggedTours} 
+              setFlaggedTours={setFlaggedTours} 
+            />
+            {!isLoggedIn && tours.length > 6 && (
+              <div className="login-prompt">
+                <p>Login to see more tours</p>
+                <button onClick={() => setShowLogin(true)}>Login</button>
+              </div>
+            )}
+          </>
         )}
       </div>
-    </div>
     </div>
   );
 };

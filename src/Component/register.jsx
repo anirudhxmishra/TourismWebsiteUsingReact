@@ -9,6 +9,7 @@ function Register({ onClose }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // Add loading state
 
   function changeHandler(event) {
     setFormData((prevFormData) => ({
@@ -28,59 +29,54 @@ function Register({ onClose }) {
     return Object.keys(newErrors).length === 0;
   }
 
-  function submitHandler(event) {
-    event.preventDefault();
-    if (validateForm()) {
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return; // Validate before API call
+
+    try {
+      setLoading(true);
+      const response = await fetch("http://localhost:8080/register", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Something went wrong!");
+
+      console.log(data);
       alert("Registration Successful!");
-      onClose(); // ✅ Close modal after success
+      onClose(); 
+    } catch (error) {
+      alert(error.message);
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
-
     <div className="register-container">
       <h2>Register</h2>
       <form onSubmit={submitHandler}>
-        <input
-          type="text"
-          placeholder="First Name"
-          onChange={changeHandler}
-          name="firstName"
-          value={formData.firstName}
-        />
+        <input type="text" placeholder="First Name" onChange={changeHandler} name="firstName" value={formData.firstName} />
         {errors.firstName && <p className="error">{errors.firstName}</p>}
 
-        <input
-          type="text"
-          placeholder="Last Name"
-          onChange={changeHandler}
-          name="lastName"
-          value={formData.lastName}
-        />
+        <input type="text" placeholder="Last Name" onChange={changeHandler} name="lastName" value={formData.lastName} />
         {errors.lastName && <p className="error">{errors.lastName}</p>}
 
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={changeHandler}
-          name="email"
-          value={formData.email}
-        />
+        <input type="email" placeholder="Email" onChange={changeHandler} name="email" value={formData.email} />
         {errors.email && <p className="error">{errors.email}</p>}
 
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={changeHandler}
-          name="password"
-          value={formData.password}
-        />
+        <input type="password" placeholder="Password" onChange={changeHandler} name="password" value={formData.password} />
         {errors.password && <p className="error">{errors.password}</p>}
 
-        <button type="submit" className="register-btn">Sign Up</button>
+        <button type="submit" className="register-btn" disabled={loading}>
+          {loading ? "Signing Up..." : "Sign Up"}
+        </button>
       </form>
     </div>
-
   );
 }
 
